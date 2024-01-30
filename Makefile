@@ -20,6 +20,7 @@ clean:
 install: all
 	install -D -m 644 ttyPos.ko $(INSTALL_DIR)/ttyPos.ko
 	/sbin/depmod -a
+	modprobe ttyPos
 uninstall:
 	modprobe -r ttyPos ; echo -n
 	$(RM) $(INSTALL_DIR)/ttyPos.ko
