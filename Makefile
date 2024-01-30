@@ -1,8 +1,12 @@
-
+MODULE=ttyPos
 KERNEL_VER:=$(shell uname -r)
 KERNEL_DIR:=/lib/modules/$(KERNEL_VER)/build
 INSTALL_DIR:=/lib/modules/$(KERNEL_VER)/ttyPos
 
+KBUILD_CFLAGS1:=$(call cc-option,-Wno-error=implicit-function-declaration,)
+KBUILD_CFLAGS2:=$(call cc-option,-Wno-error=incompatible-pointer-types,)
+KBUILD_CFLAGS+=$(KBUILD_CFLAGS1)
+KBUILD_CFLAGS+=$(KBUILD_CFLAGS2)
 obj-m := ttyPos.o
 
 
